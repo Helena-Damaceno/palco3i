@@ -14,8 +14,8 @@
 <head\>
 
 <body>
+    <a href="layout.php"> Principal </a>
     <a href="painel.php"> Principal </a>
-
     <h2> Cadastro para o acesso de Administrador</h2>
 
      <form method="POST">
