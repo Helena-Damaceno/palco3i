@@ -4,14 +4,20 @@ require_once '../conexao.php';
 $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome_usuario  = trim($_POST['nome_usuario']);
-    $email_usuario = trim($_POST['email_usuario']);
-    $senha         = trim($_POST['senha']);
+    $titulo = trim($_POST['titulo']);
+    $descricao = trim($_POST['descricao']);
+    $data_show = trim($_POST['data_show']);
+    $locals = trim($_POST['locals']);
+    $preco = trim($_POST['preco']);
+    $capacidade = trim($_POST['capacidade']);
+    $ing_disponiveis = trim($_POST['ing_disponiveis']);
+    $imagem = trim($_POST['imagem']);
+    $id_categ = trim($_POST['id_categ']);
 
-    $sql = "INSERT INTO usuarios (nome_usuario, email_usuario, senha)
-            VALUES (?, ?, ?)";
+    $sql = "INSERT INTO shows (titulo, descricao, data_show, locals, preco, capacidade, ing_disponiveis, imagem, id_categ)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("sss", $nome_usuario, $email_usuario, $senha);
+    $stmt->bind_param("ssssddddi", $titulo, $descricao, $data_show, $locals, $preco, $capacidade, $ing_disponiveis, $imagem, $id_categ);
 
     if ($stmt->execute()) {
         header("Location: painel_adm.php");
@@ -28,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro de Administrador</title>
+    <title>Cadastro de Shows</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
