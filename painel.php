@@ -23,26 +23,28 @@ require_once('conexao.php');
       <div id="imagem">
         <div id="menu">
           <a href="admin/area_adm.php">Cadastrar Como Administrador</a>
-           <a href="vendas.php">Vendas</a>
+          <a href="vendas.php">Vendas</a>
         </div>
 
       </div>
 
-      <h1>Administração do Sistema</h1>
+      <h1>Shows Disponíveis</h1>
 
       <?php
       $sql = "SELECT * FROM shows ORDER BY data_show DESC";
       $res = mysqli_query($conexao, $sql);
 
       while ($linha = mysqli_fetch_assoc($res)) {
-        echo "Título: " . $linha['titulo'] . " - ";
-        echo "Descrição: " . $linha['descricao'] . " - ";
-        echo "Data: " . $linha['data_show'] . " - ";
-        echo "Preço: " . $linha['preco'] . " - ";
+        echo "Título: " . $linha['titulo'] . "<br>";
+        echo "Descrição: " . $linha['descricao'] . "<br>";
+        echo "Data: " . $linha['data_show'] . "<br>";
+        echo "Preço: R$ " . $linha['preco'] . "<br>";
+
         if (!empty($linha['imagem'])) {
-         echo "<img src='uploads/" . $linha['imagem'] . "' width='100'>";
+          echo "<img src='uploads/" . $linha['imagem'] . "' width='200'>";
         }
-        echo "<br>";
+
+        echo "<br><br>";
       }
       ?>
 

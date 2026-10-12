@@ -79,6 +79,7 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
                 <input type="submit" value="Confirmar exclusão">
             </form>
+            
             <?php
         }
     }
