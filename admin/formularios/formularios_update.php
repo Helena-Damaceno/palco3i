@@ -1,98 +1,101 @@
 <?php
 
 require_once(__DIR__ . '/../../conexao.php');
-
-
-$show = null;
-if (isset($_GET['cod'])) {
-    $cod = (int) $_GET['cod'];
-    $stmt = $conexao->prepare("SELECT * FROM shows WHERE id_show = ?");
-    $stmt->bind_param("i", $cod);
-    $stmt->execute();
-    $show = $stmt->get_result()->fetch_assoc();
-}
 ?>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>Atualizar os Shows</title>
 </head>
 
 <body>
-    <a href="painel_adm.php"> Voltar </a>
 
-    <h1> Atualizar Registros</h1>
-    <?php
-    require_once(__DIR__ . '/../../conexao.php');
+<a href="painel_adm.php">Voltar</a>
 
-    $sql = "select * from shows";
-    $res = mysqli_query($conexao, $sql) or die(mysqli_connect_error());
-    $num = mysqli_num_rows($res);
+<h1>Atualizar Registros</h1>
 
-    while ($linha = mysqli_fetch_row($res)) {
+<?php
+$sql = "SELECT * FROM shows";
+$res = mysqli_query($conexao, $sql);
 
-        echo "Título: " . $linha[1] . ' - ';
-        echo "Descrição: " . $linha[2] . ' - ';
-        echo "Data: " . $linha[3] . ' - ';
-        echo "Local: " . $linha[4] . ' - ';
-        echo "Preço: " . $linha[5] . ' - ';
-        echo "Capacidade: " . $linha[6] . ' - ';
-        echo "Ingressos Disponíveis: " . $linha[7] . ' - ';
 
-        echo "<a href='formularios_update.php?cod=$linha[0]'> [ Atualizar ] </a>";
-        echo "<br />";
-    }
-    ?>
-    <br /> <br /> <br /> <br /><br />
+while ($linha = mysqli_fetch_assoc($res)) {
+    $cod = $linha['id_show'];
 
-    <?php if ($show) { ?>
+    echo "Título: " . $linha['titulo'] . " - ";
+    echo "Descrição: " . $linha['descricao'] . " - ";
+    echo "Data: " . $linha['data_show'] . " - ";
+    echo "Local: " . $linha['locals'] . " - ";
+    echo "Preço: " . $linha['preco'] . " - ";
+    echo "Capacidade: " . $linha['capacidade'] . " - ";
+    echo "Ingressos: " . $linha['ing_disponiveis'] . " - ";
 
-        <h1>Altere os dados e clique em Atualizar</h1>
+   
+    echo "<a href='formularios_update.php?cod=$cod'>[ Atualizar ]</a>";
+    echo "<br><br>";
+}
+?>
 
-        <form name="dados" action="exec_update.php" method="POST">
-            <input type="hidden" name="cod" value="<?= $show['id_show'] ?>" />
+<?php
 
-            Título: <input type="text" name="titulo" size="50" maxlength="50"
-                value="<?= htmlspecialchars($show['titulo']) ?>" required />
-            <br /><br />
+if (isset($_GET['cod'])) {
 
-            Descrição: <input type="text" name="descricao" size="100" maxlength="200"
-                value="<?= htmlspecialchars($show['descricao']) ?>" />
-            <br /><br />
+    $cod = (int) $_GET['cod'];
 
-            Data: <input type="date" name="data_show" value="<?= $show['data_show'] ?>" required />
-            <br /><br />
 
-            Local: <input type="text" name="locals" size="100" maxlength="200"
-                value="<?= htmlspecialchars($show['locals']) ?>" required />
-            <br /><br />
+    $sql = "SELECT * FROM shows WHERE id_show = $cod";
+    $res = mysqli_query($conexao, $sql);
+    $show = mysqli_fetch_assoc($res);
 
-            Preço: <input type="number" name="preco" step="0.01" min="0" value="<?= $show['preco'] ?>" required />
-            <br /><br />
+    if ($show) {
+?>
+        <hr>
+        <h2>Altere os dados e clique em Atualizar</h2>
 
-            Capacidade: <input type="number" name="capacidade" min="1" value="<?= $show['capacidade'] ?>" required />
-            <br /><br />
+        <form action="exec_update.php" method="POST">
+            <input type="hidden" name="cod" value="<?php echo $show['id_show']; ?>">
 
-            Ingressos Disponíveis: <input type="number" name="ing_disponiveis" min="0"
-                value="<?= $show['ing_disponiveis'] ?>" required />
-            <br /><br />
+            Título:
+            <input type="text" name="titulo" value="<?php echo $show['titulo']; ?>">
+            <br><br>
 
-            <input type="submit" name="sub" value="Atualizar">
+            Descrição:
+            <input type="text" name="descricao" value="<?php echo $show['descricao']; ?>">
+            <br><br>
+
+            Data:
+            <input type="date" name="data_show" value="<?php echo $show['data_show']; ?>">
+            <br><br>
+
+            Local:
+            <input type="text" name="locals" value="<?php echo $show['locals']; ?>">
+            <br><br>
+
+            Preço:
+            <input type="number" name="preco" step="0.01" value="<?php echo $show['preco']; ?>">
+            <br><br>
+
+            Capacidade:
+            <input type="number" name="capacidade" value="<?php echo $show['capacidade']; ?>">
+            <br><br>
+
+            Ingressos disponíveis:
+            <input type="number" name="ing_disponiveis" value="<?php echo $show['ing_disponiveis']; ?>">
+            <br><br>
+
+            <input type="submit" value="Atualizar">
         </form>
-
-    <?php } ?>
-
-    <?php ?>
-
-    <?php
-    if (isset($_GET['retorno'])) {
-        echo "<br />";
-        echo "<font face='Arial' size='3' color='#F00'>";
-        echo htmlspecialchars($_GET['retorno']);
-        echo "</font>";
+<?php
     }
-    ?>
-</body>
+}
+?>
 
+<?php
+
+if (isset($_GET['retorno'])) {
+    echo "<p style='color:red;'>" . $_GET['retorno'] . "</p>";
+}
+?>
+
+</body>
 </html>

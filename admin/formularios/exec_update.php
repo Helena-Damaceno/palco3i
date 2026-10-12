@@ -1,20 +1,34 @@
 <?php
 require_once(__DIR__ . '/../../conexao.php');
 
-$titulo = $_POST['titulo'];
-$descricao = $_POST['descricao'];
-$data_show = $_POST['data_show'];
-$locals = $_POST['locals'];
-$preco = $_POST['preco'];
-$capacidade = $_POST['capacidade'];
-$ing_disponiveis = $_POST['ing_disponiveis'];
 
-$stmt = $conexao->prepare("UPDATE shows
-    SET titulo = ?, descricao = ?, data_show = ?, locals = ?, preco = ?, capacidade = ?, ing_disponiveis = ?
-    WHERE id_show = ?");
-$stmt->bind_param("ssssdddi", $titulo, $descricao, $data_show, $locals, $preco, $capacidade, $ing_disponiveis, $_POST['cod']);
-$stmt->execute();
+$cod = (int) $_POST['cod'];
+$titulo = mysqli_real_escape_string($conexao, $_POST['titulo']);
+$descricao = mysqli_real_escape_string($conexao, $_POST['descricao']);
+$data_show = mysqli_real_escape_string($conexao, $_POST['data_show']);
+$locals = mysqli_real_escape_string($conexao, $_POST['locals']);
+$preco = (float) $_POST['preco'];
+$capacidade = (int) $_POST['capacidade'];
+$ing_disponiveis = (int) $_POST['ing_disponiveis'];
 
-$msg = urlencode('Registro atualizado com sucesso ! ! ! ');
-header("location: formularios_update.php?retorno=$msg");
+// atualiza o show no banco
+$sql = "UPDATE shows SET
+            titulo = '$titulo',
+            descricao = '$descricao',
+            data_show = '$data_show',
+            locals = '$locals',
+            preco = $preco,
+            capacidade = $capacidade,
+            ing_disponiveis = $ing_disponiveis
+        WHERE id_show = $cod";
+
+if (mysqli_query($conexao, $sql)) {
+    $msg = "Registro atualizado com sucesso!";
+} else {
+    $msg = "Não foi possível atualizar: " . mysqli_error($conexao);
+}
+
+
+header("Location: formularios_update.php?retorno=" . urlencode($msg));
+exit;
 ?>
