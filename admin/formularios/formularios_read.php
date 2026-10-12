@@ -1,7 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/../../conexao.php');?>
+require_once(__DIR__ . '/../../conexao.php'); ?>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Pesquisar Shows</title>
@@ -9,56 +10,57 @@ require_once(__DIR__ . '/../../conexao.php');?>
 
 <body>
 
-<a href="painel_adm.php">Voltar</a>
+    <a href="painel_adm.php">Voltar</a>
 
-<h1>Pesquisar Shows</h1>
+    <h1>Pesquisar Shows</h1>
 
-<form method="POST">
-    Título do show:
-    <input type="text" name="Nome do show">
-    <input type="submit" value="Procurar">
-</form>
+    <form method="POST">
+        Título do show:
+        <input type="text" name="titulo">
+        <input type="submit" value="Procurar">
+    </form>
 
-<br>
+    <br>
 
-<?php
+    <?php
 
-if (isset($_POST['titulo'])) {
+    if (isset($_POST['titulo'])) {
 
-   
-    $titulo = mysqli_real_escape_string($conexao, $_POST['titulo']);
 
-    
-    $sql = "SELECT * FROM shows WHERE titulo LIKE '%$titulo%'";
-    $resultado = mysqli_query($conexao, $sql);
+        $titulo = mysqli_real_escape_string($conexao, $_POST['titulo']);
 
-    
-    if (!$resultado) {
-        echo "Erro: " . mysqli_error($conexao);
-    } else {
 
-       
-        if (mysqli_num_rows($resultado) == 0) {
-            echo "Nenhum show encontrado.";
-        }
+        $sql = "SELECT * FROM shows WHERE titulo LIKE '%$titulo%'";
+        $resultado = mysqli_query($conexao, $sql);
 
-        while ($linha = mysqli_fetch_assoc($resultado)) {
-            echo "Título: " . $linha['titulo'] . "<br>";
-            echo "Descrição: " . $linha['descricao'] . "<br>";
-            echo "Data: " . $linha['data_show'] . "<br>";
-            echo "Local: " . $linha['locals'] . "<br>";
-            echo "Preço: R$ " . $linha['preco'] . "<br>";
-            echo "Ingressos disponíveis: " . $linha['ing_disponiveis'] . "<br>";
 
-            if ($linha['imagem'] != "") {
-                echo "<img src='imagens/" . $linha['imagem'] . "' width='250'>";
+        if (!$resultado) {
+            echo "Erro: " . mysqli_error($conexao);
+        } else {
+
+
+            if (mysqli_num_rows($resultado) == 0) {
+                echo "Nenhum show encontrado.";
             }
 
-            echo "<hr>";
+            while ($linha = mysqli_fetch_assoc($resultado)) {
+                echo "Título: " . $linha['titulo'] . "<br>";
+                echo "Descrição: " . $linha['descricao'] . "<br>";
+                echo "Data: " . $linha['data_show'] . "<br>";
+                echo "Local: " . $linha['locals'] . "<br>";
+                echo "Preço: R$ " . $linha['preco'] . "<br>";
+                echo "Ingressos disponíveis: " . $linha['ing_disponiveis'] . "<br>";
+
+                if ($linha['imagem'] != "") {
+                    echo "<img src='../../uploads/" . $linha['imagem'] . "' width='250'>";
+                }
+
+                echo "<hr>";
+            }
         }
     }
-}
-?>
+    ?>
 
 </body>
+
 </html>

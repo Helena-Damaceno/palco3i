@@ -15,41 +15,47 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
     <h1>Excluir Registros</h1>
 
-        <?php
+    <?php
 
-        $sql = "SELECT * FROM shows";
-        $res = mysqli_query($conexao, $sql);
+    $sql = "SELECT * FROM shows";
+    $res = mysqli_query($conexao, $sql);
 
 
-        while ($linha = mysqli_fetch_assoc($res)) {
-            $cod = $linha['id_show'];
+    while ($linha = mysqli_fetch_assoc($res)) {
+        $cod = $linha['id_show'];
 
-            echo "Título: " . $linha['titulo'] . " - ";
-            echo "Descrição: " . $linha['descricao'] . " - ";
-            echo "Data: " . $linha['data_show'] . " - ";
-            echo "Local: " . $linha['locals'] . " - ";
-            echo "Preço: " . $linha['preco'] . " - ";
+        echo "Título: " . $linha['titulo'] . " - ";
+        echo "Descrição: " . $linha['descricao'] . " - ";
+        echo "Data: " . $linha['data_show'] . " - ";
+        echo "Local: " . $linha['locals'] . " - ";
+        echo "Preço: " . $linha['preco'] . " - ";
 
-           
-            echo "<a href='formularios_delete.php?cod=$cod'>[ Excluir ]</a>";
-            echo "<br><br>";
+
+        echo "<a href='formularios_delete.php?cod=$cod'>[ Excluir ]</a>";
+
+
+        if (!empty($linha['imagem'])) {
+            echo "<br><img src='../../uploads/" . $linha['imagem'] . "' width='100'>";
         }
-        ?>
 
-        <?php
+        echo "<br><br>";
+    }
+    ?>
 
-        if (isset($_GET['cod'])) {
+    <?php
 
-            $cod = (int) $_GET['cod'];
+    if (isset($_GET['cod'])) {
 
-
-            $sql = "SELECT * FROM shows WHERE id_show = $cod";
-            $res = mysqli_query($conexao, $sql);
-            $show = mysqli_fetch_assoc($res);
+        $cod = (int) $_GET['cod'];
 
 
-            if ($show) {
-                ?>
+        $sql = "SELECT * FROM shows WHERE id_show = $cod";
+        $res = mysqli_query($conexao, $sql);
+        $show = mysqli_fetch_assoc($res);
+
+
+        if ($show) {
+            ?>
             <hr>
             <h2>Confirma exclusão do registro?</h2>
 
@@ -59,22 +65,31 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
                 Título: <input type="text" readonly value="<?php echo $show['titulo']; ?>">
                 <br><br>
 
+                Descrição: <input type="text" readonly value="<?php echo $show['descricao']; ?>">
+                <br><br>
+
                 Local: <input type="text" readonly value="<?php echo $show['locals']; ?>">
+                <br><br>
+
+                Preço: <input type="text" readonly value="<?php echo $show['preco']; ?>">
+                <br><br>
+
+                Imagem: <input type="blob" readonly value="<?php echo $show['imagem']; ?>">
                 <br><br>
 
                 <input type="submit" value="Confirmar exclusão">
             </form>
-                        <?php
-            }
+            <?php
         }
-        ?>
+    }
+    ?>
 
-        <?php
+    <?php
 
-        if (isset($_GET['retorno'])) {
-            echo "<p style='color:red;'>" . $_GET['retorno'] . "</p>";
-        }
-        ?>
+    if (isset($_GET['retorno'])) {
+        echo "<p style='color:red;'>" . $_GET['retorno'] . "</p>";
+    }
+    ?>
 
 </body>
 

@@ -15,6 +15,7 @@ if (isset($_POST['email'])) {
     if (!$resultado) {
         $mensagem = "Erro no banco: " . mysqli_error($conexao);
     } else if ($email == "admin@gmail.com" && mysqli_num_rows($resultado) >= 1) {
+
         $_SESSION['admin'] = "sim";
         header("Location: formularios/painel_adm.php");
         exit;
@@ -30,6 +31,7 @@ if (isset($_POST['email'])) {
 </head>
 
 <body>
+<a href="../painel.php">Voltar</a>
 
 <h1>Login do Administrador</h1>
 

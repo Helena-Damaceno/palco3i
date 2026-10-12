@@ -32,6 +32,10 @@ while ($linha = mysqli_fetch_assoc($res)) {
 
    
     echo "<a href='formularios_update.php?cod=$cod'>[ Atualizar ]</a>";
+
+    if (!empty($linha['imagem'])) {
+        echo "<br><img src='../../uploads/" . $linha['imagem'] . "' width='100'>";
+    }
     echo "<br><br>";
 }
 ?>

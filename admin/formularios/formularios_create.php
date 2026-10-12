@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrando Shows</title>
@@ -6,12 +7,11 @@
 
 <body>
 
-<a href="painel_adm.php">Voltar</a>
+    <a href="painel_adm.php">Voltar</a>
 
-<h1>Formulário para Cadastrar Shows</h1>
+    <h1>Formulário para Cadastrar Shows</h1>
 
-<form action="exec_create.php" method="POST" enctype="multipart/form-data">
-
+    <form action="exec_create.php" method="POST" enctype="multipart/form-data"> 
     Nome do Show:
     <input type="text" name="titulo" size="50" required>
     <br><br>
@@ -52,10 +52,10 @@
     <br><br>
 
     Imagem:
-    <input type="file" name="imagem">
+    <input type="file" name="imagem" accept="image/*">
 
-        <br><br>
+    <br><br>
 
     <input type="submit" value="Cadastrar">
 
-</form>
+    </form>

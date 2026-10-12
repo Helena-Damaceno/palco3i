@@ -11,7 +11,7 @@ $preco = (float) $_POST['preco'];
 $capacidade = (int) $_POST['capacidade'];
 $ing_disponiveis = (int) $_POST['ing_disponiveis'];
 
-// atualiza o show no banco
+
 $sql = "UPDATE shows SET
             titulo = '$titulo',
             descricao = '$descricao',
