@@ -28,5 +28,5 @@ if ($stmt->execute()) {
 }
 
 
-header("Location: formularios.php?retorno=" . urlencode($msg));
+header("Location: formularios_create.php?retorno=" . urlencode($msg));
 exit;
