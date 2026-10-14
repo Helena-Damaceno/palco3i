@@ -30,7 +30,6 @@ require_once('conexao.php');
 
         <div class="bg-pink-50 font-bold p-4 text-2xl text-pink-50">
 
-          <h2> Sgt Peppers Festival Club </h2>
         </div>
         <h1>Shows Disponíveis</h1>
       </div>
