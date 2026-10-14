@@ -1,6 +1,25 @@
 <?php
 require_once('conexao.php');
+
+$titulo = "";
+$id_categ = 0;
+
+if (isset($_POST['titulo'])) {
+  $titulo = mysqli_real_escape_string($conexao, $_POST['titulo']);
+  $id_categ = (int) $_POST['id_categ'];
+}
+
+$sql = "SELECT * FROM shows WHERE titulo LIKE '%$titulo%'";
+
+if ($id_categ > 0) {
+  $sql = $sql . " AND id_categ = $id_categ";
+}
+
+$sql = $sql . " ORDER BY data_show DESC";
+$res = mysqli_query($conexao, $sql);
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -28,17 +47,32 @@ require_once('conexao.php');
 
         </div>
 
-        <div class="bg-pink-50 font-bold p-4 text-2xl text-pink-50">
+        <div class="banner">
+
+          <img src="imagens/SGTPEPPERSFESTIVAL.png" alt="Descrição da imagem">
 
         </div>
+
         <h1>Shows Disponíveis</h1>
+
+        <form method="POST">
+          Título do show:
+          <input type="text" name="titulo">
+          Categoria:
+          <select name="id_categ">
+            <option value="0">Todas</option>
+            <option value="1">Rock</option>
+            <option value="2">MPB</option>
+            <option value="3">Pop</option>
+            <option value="4">Samba</option>
+          </select>
+          <input type="submit" value="Procurar">
+        </form>
+
       </div>
 
       <div class="shows">
         <?php
-        $sql = "SELECT * FROM shows ORDER BY data_show DESC";
-        $res = mysqli_query($conexao, $sql);
-
         while ($linha = mysqli_fetch_assoc($res)) {
           echo "<div class='card'>";
           echo "<h3>" . $linha['titulo'] . "</h3>";

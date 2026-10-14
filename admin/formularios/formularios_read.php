@@ -17,6 +17,14 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
     <form method="POST">
         Título do show:
         <input type="text" name="titulo">
+        Categoria:
+        <select name="id_categ">
+            <option value="">Todas</option>
+            <option value="1">Rock</option>
+            <option value="2">MPB</option>
+            <option value="3">Pop</option>
+            <option value="4">Samba</option>
+        </select>
         <input type="submit" value="Procurar">
     </form>
 
@@ -24,13 +32,11 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
     <?php
 
-    if (isset($_POST['titulo'])) {
+    if (isset($_POST['id_categ'])) {
 
+        $id_categ = (int) $_POST['id_categ'];
 
-        $titulo = mysqli_real_escape_string($conexao, $_POST['titulo']);
-
-
-        $sql = "SELECT * FROM shows WHERE titulo LIKE '%$titulo%'";
+        $sql = "SELECT * FROM shows WHERE id_categ = $id_categ";
         $resultado = mysqli_query($conexao, $sql);
 
 
