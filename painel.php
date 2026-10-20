@@ -24,7 +24,7 @@ $res = mysqli_query($conexao, $sql);
 <html>
 
 <head>
-  <link href="painel.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/palco3i/painel.css">
   <meta charset="UTF-8">
   <title>Painel Cliente</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -53,7 +53,7 @@ $res = mysqli_query($conexao, $sql);
 
         </div>
 
-        <h1>Shows Disponíveis</h1>
+        <h1 class="text-2xl font-bold mb-4">Shows Disponíveis</h1>
 
         <form method="POST">
           Título do show:
@@ -75,13 +75,13 @@ $res = mysqli_query($conexao, $sql);
         <?php
         while ($linha = mysqli_fetch_assoc($res)) {
           echo "<div class='card'>";
-          echo "<h3>" . $linha['titulo'] . "</h3>";
+          echo "<h3 class='text-xl font-bold mb-2'>" . $linha['titulo'] . "</h3>";
           echo "<p>" . $linha['descricao'] . "</p>";
           echo "<p>Data: " . $linha['data_show'] . "</p>";
           echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
 
           if (!empty($linha['imagem'])) {
-            echo "<img src='uploads/" . $linha['imagem'] . "' width='200'>";
+            echo "<img src='uploads/" . $linha['imagem'] . "' height='200' width='400'>";
           }
           echo "</div>";
         }
