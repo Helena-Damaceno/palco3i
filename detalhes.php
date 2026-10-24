@@ -20,13 +20,15 @@ if (!$show) {
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link rel="stylesheet" href="./detalhes.css?v=<?= time() ?>">
     <meta charset="UTF-8">
-    <title>Detalhes do Show</title>
 </head>
 
-<body>
+<body class="fundo">
 
-    <a id="cabecalho" class="bg-yellow-500 text-white text-xl font-bold p-4" href="painel.php">Voltar</a>
+    <div id="cabecalho" class="bg-yellow-500 text-white text-xl font-bold p-4">
+        <a href="painel.php">Voltar</a>
+    </div>
 
     <h1><?php echo $show['titulo']; ?></h1>
 
