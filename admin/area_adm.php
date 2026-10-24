@@ -24,26 +24,42 @@ if (isset($_POST['email'])) {
     }
 }
 ?>
+
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./area_adm.css?v=<?= time() ?>">
     <title>Login</title>
 </head>
 
 <body>
-<a href="../painel.php">Voltar</a>
+    <div id="cabecalho" class="bg-yellow-500 text-white text-xl font-bold p-4">
+        <a href="../painel.php">Voltar</a>
+    </div>
+       <div class="caixa">
+        <h1 class= " text-xl font-bold p-4"> Login do Administrador</h1>
 
-<h1>Login do Administrador</h1>
+        <form method="POST" class="font-bold" >
+            Email: 
+            <br>
+            <input type="text" name="email">
+            <br><br>
 
-<form method="POST">
-    Email: <input type="text" name="email">
-    <br><br>
-    Senha: <input type="password" name="senha">
-    <br><br>
-    <input type="submit" value="Entrar">
-</form>
+            Senha:
+            <br>
+            <input type="password" name="senha">
+            <br><br>
 
-<p style="color:red;"><?php echo $mensagem; ?></p>
+           
+        </form>
 
+         <input type="submit" value="Entrar" class="entrar" class= "text-white text-xl font-bold p-4">
+
+        <p style="color:red;"><?php echo $mensagem; ?></p>
+    </div>
 </body>
+
 </html>

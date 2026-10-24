@@ -24,13 +24,13 @@ $res = mysqli_query($conexao, $sql);
 <html>
 
 <head>
-  <link rel="stylesheet" href="/palco3i/painel.css">
+  <link rel="stylesheet" href="./painel.css?v=<?= time() ?>">
   <meta charset="UTF-8">
   <title>Painel Cliente</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-blue-500">
+<body>
   <div id="container">
     <div id="menu">
 
@@ -51,12 +51,10 @@ $res = mysqli_query($conexao, $sql);
 
           <img src="imagens/SGTPEPPERSFESTIVAL.png" alt="Descrição da imagem">
 
-        </div>
-
-        <h1 class="text-2xl font-bold mb-4">Shows Disponíveis</h1>
-
+</div>
+         <div class="pesquisa"> 
         <form method="POST">
-          Título do show:
+          Pesquisar:
           <input type="text" name="titulo">
           Categoria:
           <select name="id_categ">
@@ -66,9 +64,9 @@ $res = mysqli_query($conexao, $sql);
             <option value="3">Pop</option>
             <option value="4">Samba</option>
           </select>
-          <input type="submit" value="Procurar">
+          <input class="procurar" type="submit" value="Procurar">
         </form>
-
+</div>
       </div>
 
       <div class="shows">
@@ -79,10 +77,14 @@ $res = mysqli_query($conexao, $sql);
           echo "<p>" . $linha['descricao'] . "</p>";
           echo "<p>Data: " . $linha['data_show'] . "</p>";
           echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
+           
 
           if (!empty($linha['imagem'])) {
             echo "<img src='uploads/" . $linha['imagem'] . "' height='200' width='400'>";
           }
+
+          echo "<a href='detalhes.php?id=" . $linha['id_show'] . "'>[ Ver Mais ]</a>";
+          
           echo "</div>";
         }
         ?>

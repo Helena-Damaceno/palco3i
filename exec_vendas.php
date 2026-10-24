@@ -29,6 +29,6 @@ if ($qtd < 1) {
     $msg = "Compra realizada com sucesso!";
 }
 
-header("Location: vendas.php?retorno=" . urlencode($msg));
+header("Location: detalhes.php?id=$cod&retorno=" . urlencode($msg));
 exit;
 ?>
