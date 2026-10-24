@@ -11,6 +11,8 @@ require_once('../../conexao.php');
 
 <head>
     <link rel="stylesheet" href="./painel_adm.css?v=<?= time() ?>">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <meta charset="UTF-8">
     <title>Painel Administrativo</title>
 </head>
@@ -20,7 +22,7 @@ require_once('../../conexao.php');
 
         <div id="topo"></div>
 
-        <div id="menu">
+        <div class="bg-yellow-500 text-white text-xl font-bold p-4">
             <a href="formularios_create.php">Cadastrar</a>
             <a href="formularios_update.php">Atualizar</a>
             <a href="formularios_delete.php">Excluir</a>
@@ -35,28 +37,29 @@ require_once('../../conexao.php');
 
                 <h1>Administração do Sistema</h1>
 
-                <?php
-                $sql = "SELECT * FROM shows";
-                $res = mysqli_query($conexao, $sql);
+                <div class="caixa">
+                        <?php
+                        $sql = "SELECT * FROM shows";
+                        $res = mysqli_query($conexao, $sql);
 
-                while ($linha = mysqli_fetch_assoc($res)) {
-                    echo "Título: " . $linha['titulo'] . " - ";
-                    echo "Descrição: " . $linha['descricao'] . " - ";
-                    echo "Data: " . $linha['data_show'] . " - ";
-                    echo "Preço: " . $linha['preco'] . " - ";
-                    if (!empty($linha['imagem'])) {
-                        echo "<img src='../../uploads/" . $linha['imagem'] . "' width='100'>";
-                    }
-                    echo "<br>";
-                }
-                ?>
+                        while ($linha = mysqli_fetch_assoc($res)) {
+                            echo "Título: " . $linha['titulo'] . " - ";
+                            echo "Descrição: " . $linha['descricao'] . " - ";
+                            echo "Data: " . $linha['data_show'] . " - ";
+                            echo "Preço: " . $linha['preco'] . " - ";
+                            if (!empty($linha['imagem'])) {
+                                echo "<img src='../../uploads/" . $linha['imagem'] . "' width='100'>";
+                            }
+                            echo "<br>";
+                        }
+                        ?>
 
-                <center>
-                    <a href="formularios_create.php">
-                        <img class="imagem" src="../../img/cad.jpg">
-                    </a>
-                </center>
-
+                    <center>
+                        <a href="formularios_create.php">
+                            <img class="imagem" src="../../img/cad.jpg">
+                        </a>
+                    </center>
+                </div>
             </div>
         </div>
 

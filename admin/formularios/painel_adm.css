@@ -1,0 +1,87 @@
+#container {
+    background-color: rgb(125, 143, 194);
+}
+
+
+.card {
+    background-color: rgb(227, 228, 253);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: rgb(0, 0, 0);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+    border: 4px solid rgb(43, 68, 138);
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+input[type="text"],
+select {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    background-color: antiquewhite;
+    font-style: inherit;
+}
+
+.vermais {
+    margin-bottom: 12px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background-color: rgb(214, 65, 115);
+    height: 12px;
+
+}
+
+.pesquisa {
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(221, 148, 52);
+
+}
+
+.procurar {
+    padding: 8px 16px;
+    background-color: rgb(216, 56, 96);
+    color: white;
+    border: black;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.shows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    height: 60px;
+}
+
+a {
+    margin-right: 20px;
+    padding-right: 20px;
+}
+
+.caixa{
+background-color: antiquewhite;
+border-radius: 12px;
+border: black;
+grid-template-columns: max-content;
+}
