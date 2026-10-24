@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(125, 143, 194);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(214, 65, 115);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+br {
+    display: none;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
