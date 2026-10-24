@@ -39,11 +39,11 @@ if (isset($_POST['email'])) {
     <div id="cabecalho" class="bg-yellow-500 text-white text-xl font-bold p-4">
         <a href="../painel.php">Voltar</a>
     </div>
-       <div class="caixa">
-        <h1 class= " text-xl font-bold p-4"> Login do Administrador</h1>
+    <div class="caixa">
+        <h1 class=" text-xl font-bold p-4"> Login do Administrador</h1>
 
-        <form method="POST" class="font-bold" >
-            Email: 
+        <form method="POST" class="font-bold">
+            Email:
             <br>
             <input type="text" name="email">
             <br><br>
@@ -52,11 +52,10 @@ if (isset($_POST['email'])) {
             <br>
             <input type="password" name="senha">
             <br><br>
+            <input type="submit" value="Entrar" class="entrar" class="text-white text-xl font-bold p-4">
 
-           
         </form>
 
-         <input type="submit" value="Entrar" class="entrar" class= "text-white text-xl font-bold p-4">
 
         <p style="color:red;"><?php echo $mensagem; ?></p>
     </div>

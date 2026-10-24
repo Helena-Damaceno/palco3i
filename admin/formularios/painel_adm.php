@@ -10,7 +10,7 @@ require_once('../../conexao.php');
 <html>
 
 <head>
-    <link href="../../css/estilo.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./painel_adm.css?v=<?= time() ?>">
     <meta charset="UTF-8">
     <title>Painel Administrativo</title>
 </head>
@@ -25,6 +25,8 @@ require_once('../../conexao.php');
             <a href="formularios_update.php">Atualizar</a>
             <a href="formularios_delete.php">Excluir</a>
             <a href="formularios_read.php">Pesquisar</a>
+            <a href="relatorio_shows.php">Relatório</a>
+
             <a href="../logout.php">Sair</a>
         </div>
 

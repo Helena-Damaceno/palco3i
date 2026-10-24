@@ -83,8 +83,8 @@ $res = mysqli_query($conexao, $sql);
             echo "<img src='uploads/" . $linha['imagem'] . "' height='200' width='400'>";
           }
 
-          echo "<a href='detalhes.php?id=" . $linha['id_show'] . "'>[ Ver Mais ]</a>";
-          
+          echo "<a class='vermais' href='detalhes.php?id=" . $linha['id_show'] . "'>   Ver Mais :</a>";
+
           echo "</div>";
         }
         ?>
