@@ -2,63 +2,73 @@ body {
     background-color: rgb(125, 143, 194);
     margin: 0;
     padding-bottom: 40px;
-    color: white;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-}
-
-h1,
-h2 {
+h1 {
     text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 16px;
+    font-size: 36px;
+    margin: 20px 0;
 }
 
-.show {
-    background-color: white;
-    color: black;
-    width: 600px;
-    margin: 10px auto;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.show a {
-    color: rgb(214, 65, 115);
-    font-weight: bold;
-}
-
-form {
-    width: 500px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-}
-
-br {
-    display: none;
-}
-
-input[type="text"],
-input[type="number"] {
+img {
     display: block;
-    width: 100%;
-    padding: 8px;
+    margin: 0 auto 20px auto;
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid rgb(43, 68, 138);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+.compra {
+    width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: aliceblue;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.compra h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
     margin-bottom: 15px;
+}
+
+.compra input[type="text"],
+.compra input[type="email"],
+.compra input[type="number"] {
+    width: 100%;
+    padding: 10px;
     border: 2px solid black;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
-input[type="submit"] {
+.compra input[type="submit"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: rgb(214, 65, 115);
     color: white;
+    font-weight: bold;
     border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.caixa {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(227, 228, 253);
+    border-radius: 20px;
+    border: 2px solid rgb(43, 68, 138);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.caixa p {
+    margin-bottom: 10px;
 }

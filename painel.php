@@ -42,7 +42,6 @@ $res = mysqli_query($conexao, $sql);
 
           <a href="admin/area_adm.php"> Cadastrar_Administrador</a>
 
-          <a href="vendas.php">Vendas</a>
 
         </div>
 
@@ -50,22 +49,22 @@ $res = mysqli_query($conexao, $sql);
 
           <img src="imagens/SGTPEPPERSFESTIVAL.png" alt="Descrição da imagem">
 
-</div>
-         <div class="pesquisa"> 
-        <form method="POST">
-          Pesquisar:
-          <input type="text" name="titulo">
-          Categoria:
-          <select name="id_categ">
-            <option value="0">Todas</option>
-            <option value="1">Rock</option>
-            <option value="2">MPB</option>
-            <option value="3">Pop</option>
-            <option value="4">Samba</option>
-          </select>
-          <input class="procurar" type="submit" value="Procurar">
-        </form>
-</div>
+        </div>
+        <div class="pesquisa">
+          <form method="POST">
+            Pesquisar:
+            <input type="text" name="titulo">
+            Categoria:
+            <select name="id_categ">
+              <option value="0">Todas</option>
+              <option value="1">Rock</option>
+              <option value="2">MPB</option>
+              <option value="3">Pop</option>
+              <option value="4">Samba</option>
+            </select>
+            <input class="procurar" type="submit" value="Procurar">
+          </form>
+        </div>
       </div>
 
       <div class="shows">
@@ -76,14 +75,12 @@ $res = mysqli_query($conexao, $sql);
           echo "<p>" . $linha['descricao'] . "</p>";
           echo "<p>Data: " . $linha['data_show'] . "</p>";
           echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
-           
+
 
           if (!empty($linha['imagem'])) {
             echo "<img src='uploads/" . $linha['imagem'] . "' height='200' width='400'>";
           }
-
-          echo "<a class='vermais' href='detalhes.php?id=" . $linha['id_show'] . "'>   Ver Mais :</a>";
-
+          echo "<a class='vermais' href='vendas.php?id=" . $linha['id_show'] . "'>Ver Mais</a>";
           echo "</div>";
         }
         ?>

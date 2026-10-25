@@ -1,4 +1,4 @@
-CREATE DATABASE palco;
+
 USE palco;
 
 CREATE TABLE categoria (
@@ -38,3 +38,11 @@ Create table usuarios (
  email_usuario varchar(300) NOT NULL,
  senha varchar(30) NOT NULL
  );
+ 
+INSERT INTO usuarios (nome_usuario, email_usuario, senha)
+VALUES ('Mariana', 'admin@gmail.com', '12345'),
+       ('Bianca', 'admin@gmail.com', '54321');
+ 
+ SELECT * FROM usuarios;
+ 
+ SELECT * FROM shows
