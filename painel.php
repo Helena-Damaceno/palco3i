@@ -26,7 +26,6 @@ $res = mysqli_query($conexao, $sql);
 <head>
   <link rel="stylesheet" href="./painel.css?v=<?= time() ?>">
   <meta charset="UTF-8">
-  <title>Painel Cliente</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 

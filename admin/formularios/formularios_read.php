@@ -34,41 +34,51 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
     <?php
 
-    if (isset($_POST['id_categ'])) {
+    if (isset($_POST['titulo'])) {
 
-        $id_categ = (int) $_POST['id_categ'];
+        $titulo = $_POST['titulo'];
+        $id_categ = $_POST['id_categ'];
 
-        $sql = "SELECT * FROM shows WHERE id_categ = $id_categ";
+        $sql = "SELECT * FROM shows WHERE titulo LIKE '%$titulo%'";
+
+        if ($id_categ != "") {
+            $sql = $sql . " AND id_categ = " . (int) $id_categ;
+        }
+
         $resultado = mysqli_query($conexao, $sql);
-
 
         if (!$resultado) {
             echo "Erro: " . mysqli_error($conexao);
         } else {
 
-
             if (mysqli_num_rows($resultado) == 0) {
-                echo "Nenhum show encontrado.";
+                echo "<p class='vazio'>Nenhum show encontrado.</p>";
             }
+
+            echo "<div class='lista'>";
 
             while ($linha = mysqli_fetch_assoc($resultado)) {
-                echo "Título: " . $linha['titulo'] . "<br>";
-                echo "Descrição: " . $linha['descricao'] . "<br>";
-                echo "Data: " . $linha['data_show'] . "<br>";
-                echo "Local: " . $linha['locals'] . "<br>";
-                echo "Preço: R$ " . $linha['preco'] . "<br>";
-                echo "Ingressos disponíveis: " . $linha['ing_disponiveis'] . "<br>";
+                echo "<div class='show'>";
 
                 if ($linha['imagem'] != "") {
-                    echo "<img src='../../uploads/" . $linha['imagem'] . "' width='250'>";
+                    echo "<img src='../../uploads/" . $linha['imagem'] . "'>";
                 }
 
-                echo "<hr>";
+                echo "<h3>" . $linha['titulo'] . "</h3>";
+                echo "<p>ID: " . $linha['id_show'] . "</p>";
+                echo "<p>" . $linha['descricao'] . "</p>";
+                echo "<p>Data: " . $linha['data_show'] . "</p>";
+                echo "<p>Local: " . $linha['locals'] . "</p>";
+                echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
+                echo "<p>Ingressos: " . $linha['ing_disponiveis'] . "</p>";
+
+                echo "</div>";
             }
+            echo "</div>";
         }
     }
-    ?>
 
+    ?>
 </body>
 
 </html>

@@ -39,6 +39,7 @@ input[type="date"] {
     margin-bottom: 15px;
     border: 2px solid black;
     box-sizing: border-box;
+    border-radius: 12px;
 }
 
 input[type="submit"] {
@@ -75,6 +76,12 @@ input[type="submit"] {
 
 .show p {
     margin-bottom: 5px;
+}
+
+.show h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
 .atualizar {

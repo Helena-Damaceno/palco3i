@@ -2,41 +2,50 @@
 include('conexao.php');
 ?>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Comprar Ingressos</title>
+    <link rel="stylesheet" href="./vendas.css?v=<?= time() ?>">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 
 <body>
 
-<a href="painel.php">Voltar</a>
+    <div id="cabecalho" class="bg-yellow-500 text-white text-xl font-bold p-4">
+        <a href="painel.php">Voltar</a>
+    </div>
+    <h1 class=" text-white text-xl font-bold p-4">Comprar Ingressos</h1>
+    <div class="lista">
 
-<h1>Comprar Ingressos</h1>
+        <?php
+        $sql = "SELECT * FROM shows";
+        $res = mysqli_query($conexao, $sql);
 
-<?php
+        while ($linha = mysqli_fetch_assoc($res)) {
+            $cod = $linha['id_show'];
 
-$sql = "SELECT * FROM shows";
-$res = mysqli_query($conexao, $sql);
+            echo "<div class='show'>";
+
+            echo "Título: " . $linha['titulo'] . " - ";
+            echo "Preço: R$ " . $linha['preco'] . " - ";
+            echo "Ingressos: " . $linha['ing_disponiveis'] . " - ";
+            echo "<a href='vendas.php?cod=$cod'>[ Comprar ]</a>";
+
+            echo "</div>";
+        }
+        ?>
+
+    </div>
 
 
-while ($linha = mysqli_fetch_assoc($res)) {
-    $cod = $linha['id_show'];
-
-    echo "Título: " . $linha['titulo'] . " - ";
-    echo "Preço: R$ " . $linha['preco'] . " - ";
-    echo "Ingressos: " . $linha['ing_disponiveis'] . " - ";
-    echo "<a href='vendas.php?cod=$cod'>[ Comprar ]</a>";
-    echo "<br><br>";
-}
-
-
-if (isset($_GET['cod'])) {
+    if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
 
     $sql = "SELECT * FROM shows WHERE id_show = $cod";
     $res = mysqli_query($conexao, $sql);
     $show = mysqli_fetch_assoc($res);
-?>
+    ?>
     <hr>
     <h2>Comprar Ingresso Do Show: <?php echo $show['titulo']; ?></h2>
 
@@ -54,13 +63,14 @@ if (isset($_GET['cod'])) {
 
         <input type="submit" value="Confirmar compra">
     </form>
-<?php
-}
 
-if (isset($_GET['retorno'])) {
-    echo "<p style='color:red;'>" . $_GET['retorno'] . "</p>";
-}
-?>
+
+    <?php
+    if (isset($_GET['retorno'])) {
+        echo "<p style='color:red;'>" . $_GET['retorno'] . "</p>";
+    }
+    ?>
 
 </body>
+
 </html>
