@@ -29,7 +29,7 @@ require_once('../../conexao.php');
                 <a href="formularios_read.php">Pesquisar</a>
                 <a href="relatorio_shows.php">Relatório</a>
 
-                <a href="../logout.php">Sair</a>
+                <a href="../logout.php">Logout</a>
             </div>
         </div>
         <div id="conteudo">

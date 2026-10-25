@@ -18,32 +18,38 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
     <h1>Excluir Registros</h1>
 
-    <?php
+    <div class="lista">
 
-    $sql = "SELECT * FROM shows";
-    $res = mysqli_query($conexao, $sql);
+        <?php
+        $sql = "SELECT * FROM shows";
+        $res = mysqli_query($conexao, $sql);
 
+        while ($linha = mysqli_fetch_assoc($res)) {
+            $cod = $linha['id_show'];
 
-    while ($linha = mysqli_fetch_assoc($res)) {
-        $cod = $linha['id_show'];
+            echo "<div class='show'>";
 
-        echo "Título: " . $linha['titulo'] . " - ";
-        echo "Descrição: " . $linha['descricao'] . " - ";
-        echo "Data: " . $linha['data_show'] . " - ";
-        echo "Local: " . $linha['locals'] . " - ";
-        echo "Preço: " . $linha['preco'] . " - ";
+            if (!empty($linha['imagem'])) {
+                echo "<img src='../../uploads/" . $linha['imagem'] . "'>";
+            }
 
+            echo "<h3>" . $linha['titulo'] . "</h3>";
+            echo "<p class='descricao'>" . $linha['descricao'] . "</p>";
 
-        echo "<a href='formularios_delete.php?cod=$cod'>[ Excluir ]</a>";
+            echo "<div class='info'>";
+            echo "<p>Data: " . $linha['data_show'] . "</p>";
+            echo "<p>Local: " . $linha['locals'] . "</p>";
+            echo "</div>";
 
+            echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
 
-        if (!empty($linha['imagem'])) {
-            echo "<br><img src='../../uploads/" . $linha['imagem'] . "' width='100'>";
+            echo "<a class='atualizar' href='formularios_delete.php?cod=$cod'>Excluir</a>";
+
+            echo "</div>";
         }
+        ?>
 
-        echo "<br><br>";
-    }
-    ?>
+    </div>
 
     <?php
 
@@ -59,7 +65,7 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
         if ($show) {
             ?>
-            <hr>
+
             <h2>Confirma exclusão do registro?</h2>
 
             <form action="exec_delete.php" method="POST">

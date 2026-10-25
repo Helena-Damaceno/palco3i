@@ -5,14 +5,17 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
 <head>
     <meta charset="UTF-8">
-    <title>Pesquisar Shows</title>
+    <link rel="stylesheet" href="./formularios_read.css?v=<?= time() ?>">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
 
-    <a href="painel_adm.php">Voltar</a>
+    <div class="bg-yellow-500 text-white text-xl font-bold p-4">
+        <a href="painel_adm.php">Voltar</a>
+    </div>
 
-    <h1>Pesquisar Shows</h1>
+    <h1 class=" text-white text-xl font-bold p-4">Pesquisar Shows</h1>
 
     <form method="POST">
         Título do show:
@@ -27,7 +30,6 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
         </select>
         <input type="submit" value="Procurar">
     </form>
-
     <br>
 
     <?php

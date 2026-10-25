@@ -40,7 +40,7 @@ require_once(__DIR__ . '/../../conexao.php');
         echo "<p>Preço: R$ " . $linha['preco'] . "</p>";
         echo "<p>Capacidade: " . $linha['capacidade'] . "</p>";
         echo "<p>Ingressos: " . $linha['ing_disponiveis'] . "</p>";
-        echo "<a class='atualizar' href='formularios_update.php?cod=$cod'>[ Atualizar ]</a>";
+        echo "<a class='atualizar' href='formularios_update.php?cod=$cod'> Atualizar </a>";
 
         echo "</div>";
     }
