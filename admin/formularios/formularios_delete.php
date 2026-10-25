@@ -6,12 +6,15 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
 <head>
     <meta charset="UTF-8">
-    <title>Excluir Shows</title>
+    <link rel="stylesheet" href="./formularios_delete.css?v=<?= time() ?>">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
 
-    <a href="painel_adm.php">Voltar</a>
+    <div class="bg-yellow-500 text-white text-xl font-bold p-4">
+        <a href="painel_adm.php">Voltar</a>
+    </div>
 
     <h1>Excluir Registros</h1>
 
@@ -79,7 +82,7 @@ require_once(__DIR__ . '/../../conexao.php'); ?>
 
                 <input type="submit" value="Confirmar exclusão">
             </form>
-            
+
             <?php
         }
     }

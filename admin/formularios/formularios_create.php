@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./formularios_create.css?v=<?= time() ?>">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Cadastrando Shows</title>
 </head>
 
 <body>
@@ -13,7 +12,7 @@
         <a href="painel_adm.php">Voltar</a>
     </div>
 
-    <h1>Formulário para Cadastrar Shows</h1>
+    <h1  class=" text-white text-xl font-bold p-4">Formulário para Cadastrar Shows</h1>
 
     <form action="exec_create.php" method="POST" enctype="multipart/form-data">
         Nome do Show:

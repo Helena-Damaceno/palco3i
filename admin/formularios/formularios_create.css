@@ -1,5 +1,6 @@
 body {
     background-color: rgb(125, 143, 194);
+    margin: 0;
 }
 
 h1 {
@@ -8,30 +9,12 @@ h1 {
 
 form {
     width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 40px auto;
     padding: 30px;
     background-color: white;
     border-radius: 20px;
+    box-shadow: 100px;
 }
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(214, 65, 115);
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
 
 br {
     display: none;
@@ -42,12 +25,27 @@ input[type="number"],
 input[type="date"],
 select {
     display: block;
+    width: 100%;
+    padding: 8px;
     margin-top: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    border: 2px solid black;
+    box-sizing: border-box;
 }
 
 input[type="file"] {
     display: block;
     margin-top: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    background-color:  rgb(214, 65, 115) ;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(214, 65, 115);
+    color: white;
+    border: none;
+    cursor: pointer;
 }
